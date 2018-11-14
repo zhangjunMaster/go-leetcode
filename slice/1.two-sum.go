@@ -40,6 +40,17 @@ func twoSum2(nums []int, target int) []int {
 	return result
 }
 
+func twoSum3(nums []int, target int) []int {
+	hashMap := make(map[int]int, len(nums))
+	for i, v := range nums {
+		if j, ok := hashMap[target-v]; ok {
+			return []int{i, j}
+		}
+		hashMap[v] = i
+	}
+	return nil
+}
+
 func main() {
 	nums := []int{3, 2, 1, 1, 4}
 	fmt.Println(twoSum1(nums, 2))

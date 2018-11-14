@@ -40,6 +40,8 @@ func twoSum2(nums []int, target int) []int {
 	return result
 }
 
+// Insert elements are determined based on the results of the loop
+
 func twoSum3(nums []int, target int) []int {
 	hashMap := make(map[int]int, len(nums))
 	for i, v := range nums {

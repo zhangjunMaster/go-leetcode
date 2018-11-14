@@ -2,7 +2,21 @@ package main
 
 import "fmt"
 
-func twoSum(nums []int, target int) []int {
+func twoSum1(nums []int, target int) []int {
+	var result []int
+outer:
+	for key, value := range nums {
+		for key1, value1 := range nums {
+			if value+value1 == target && key != key1 {
+				result = []int{key, key1}
+				break outer
+			}
+		}
+	}
+	return result
+}
+
+func twoSum2(nums []int, target int) []int {
 	var result []int
 	// Arrays have duplicate values，hashMap value is indexs []int
 	var hashMap = make(map[int][]int)
@@ -28,5 +42,6 @@ func twoSum(nums []int, target int) []int {
 
 func main() {
 	nums := []int{3, 2, 1, 1, 4}
-	fmt.Println(twoSum(nums, 2))
+	fmt.Println(twoSum1(nums, 2))
+	fmt.Println(twoSum2(nums, 2))
 }

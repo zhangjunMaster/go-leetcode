@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func climbStairs(n int) int {
 
 	number := 0
@@ -15,15 +13,11 @@ func climbStairs(n int) int {
 	}
 	prev := 1
 	now := 2
-
+	// 子过程状态更改，使用next做临时变量
 	for i := 3; i <= n; i++ {
 		next := prev + now
 		prev = now
 		now = next
 	}
 	return now
-}
-
-func main() {
-	fmt.Println(climbStairs(10))
 }

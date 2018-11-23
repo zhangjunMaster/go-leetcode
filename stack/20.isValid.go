@@ -94,5 +94,5 @@ func isValid2(s string) bool {
 }
 
 func main() {
-	fmt.Println(isValid2("[[{}]]"))
+	fmt.Println(isValid2("(&(!(ou=Domain Controllers))(!(userAcountControl=66050))))"))
 }

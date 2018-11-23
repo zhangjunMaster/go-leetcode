@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 /**
  * 1.从左到右的一次循环
  * 2.寻找循环到i就一个子过程结束，从新获取值，状态值从新获取
@@ -45,9 +43,4 @@ func rob(nums []int) int {
 		dp_1 = dp
 	}
 	return dp
-}
-
-func main() {
-	max := rob([]int{2, 7, 9, 3, 1})
-	fmt.Println(max)
 }

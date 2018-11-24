@@ -4,10 +4,6 @@ package main
 
 type v string
 
-const (
-	INFINITY int32 = 65536 // 不可能值
-)
-
 type Adj struct {
 	Nodes    []v
 	Edges    [][]int32
@@ -47,8 +43,3 @@ func NewAdj(nodes []v, edegs []edge) *Adj {
   //C [  3   7   0   9]
   //D [  6   0   9   0]
 */
-var arr = [][]int{
-	[]int{1, 3, 1},
-	[]int{1, 5, 10},
-	[]int{4, 2, 1},
-}

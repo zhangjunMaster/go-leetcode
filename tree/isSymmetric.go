@@ -11,7 +11,9 @@ package main
 
 /*
  * isMirror中是比较t1的left和t2的right，而不是t1.left和t1.right,递归下来会一直像劈叉似的延伸
- */
+ * 深度是对单个树进行递归，从而使得左边一直到左边 left -> left -> left
+   状态函数：isMirror(left, right)
+*/
 func isMirror(t1 *TreeNode, t2 *TreeNode) bool {
 	if t1 == nil && t2 == nil {
 		return true
@@ -23,47 +25,6 @@ func isMirror(t1 *TreeNode, t2 *TreeNode) bool {
 
 	return t1.Val == t2.Val && isMirror(t1.Left, t2.Right) && isMirror(t1.Right, t2.Left)
 
-}
-
-func isSymmetric(root *TreeNode) bool {
-	return isMirror(root, root)
-}
-
-/**
- * 横向的逐层查找
- * 边界条件：【】内的*TreeNode为空，或者【】为nil
- * 将每一层的节点都放到数组中，遍历这个数组，找到节点的left和right，再将这个放入到新数组中
- */
-func getVal(nodes []*TreeNode, result [][]int) [][]int {
-	var nodeVal []int
-	// 新数组
-	var newNodes []*TreeNode
-	if len(nodes) == 0 {
-		return result
-	}
-	// 遍历旧数组
-	for _, v := range nodes {
-		if v == nil {
-			return result
-		}
-		if v.Left != nil {
-			newNodes = append(newNodes, v.Left)
-		}
-		if v.Right != nil {
-			newNodes = append(newNodes, v.Right)
-		}
-		nodeVal = append(nodeVal, v.Val)
-	}
-	result = append(result, nodeVal)
-	return getVal(newNodes, result)
-}
-
-func levelOrder(root *TreeNode) [][]int {
-	var nodes []*TreeNode
-	var result [][]int
-	nodes = append(nodes, root)
-	result = getVal(nodes, result)
-	return result
 }
 
 func mian() {

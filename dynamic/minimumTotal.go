@@ -11,6 +11,7 @@ func min(a, b int) int {
 }
 
 /**
+ * 三角形的最小路径和，边界条件是0，和 i==j
  * 从后向前推的策略，同时注意 0和结尾
  * triangle[i][j] = min(triangle[i-1][j-1], triangle[i-1][j]) + triangle[i][j]
  * 计算出每一个j的值，从中选取一个

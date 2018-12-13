@@ -1,4 +1,4 @@
-package main
+package tree
 
 import "fmt"
 
@@ -18,29 +18,42 @@ type TreeNode struct {
 var s []int
 
 func NewTreeNode(Val int) *TreeNode {
-	return &TreeNode{Val: Val, Left: &TreeNode{}, Right: &TreeNode{}}
+	return &TreeNode{Val: Val, Left: nil, Right: nil}
 }
 
 // recursive call self
 // TreeNode have the property that contains recursion
 
-func (t *TreeNode) Add(Val int) bool {
+func (t *TreeNode) Add(Val int) *TreeNode {
 	// stop recursive
 	// if t == nil how to t = &TreeNode
+
 	if t.Left == nil && t.Right == nil {
-		t.Val = Val
-		t.Left = &TreeNode{}
-		t.Right = &TreeNode{}
-		return true
+		//fmt.Println(Val, t)
+		if Val < t.Val {
+			fmt.Println("val2", Val)
+			t.Left = NewTreeNode(Val)
+		} else {
+			t.Right = NewTreeNode(Val)
+		}
 	} else {
 		// call self
 		if Val < t.Val {
-			t.Left.Add(Val)
+			if t.Left == nil {
+				t.Left = NewTreeNode(Val)
+			} else {
+				t.Left.Add(Val)
+			}
 		} else {
-			t.Right.Add(Val)
+			if t.Right == nil {
+				t.Right = NewTreeNode(Val)
+			} else {
+				t.Right.Add(Val)
+			}
 		}
+
 	}
-	return false
+	return t
 }
 
 func (t *TreeNode) PreSearch() {
@@ -53,10 +66,12 @@ func (t *TreeNode) PreSearch() {
 }
 
 func (t *TreeNode) InOrderSearch() {
-	if t.Left == nil && t.Right == nil {
+	if t == nil {
 		return
 	}
+
 	t.Left.InOrderSearch()
+	fmt.Println(t.Val)
 	s = append(s, t.Val)
 	t.Right.InOrderSearch()
 }
@@ -80,17 +95,4 @@ func sMin(s []int) (min int) {
 		}
 	}
 	return min
-}
-
-func main() {
-	fmt.Println("s:", s, &s)
-	fmt.Println(s[0])
-	t := NewTreeNode(10)
-	t.Add(18)
-	t.Add(7)
-	t.Add(0)
-	t.Add(30)
-	t.InOrderSearch()
-	fmt.Println(s)
-	fmt.Println("min:", sMin(s))
 }

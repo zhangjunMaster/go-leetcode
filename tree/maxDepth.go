@@ -1,4 +1,4 @@
-package main
+package tree
 
 /**
  * 左子树 右子树操作，将问题转换为左右子树的比较

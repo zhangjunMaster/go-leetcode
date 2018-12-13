@@ -1,4 +1,4 @@
-package main
+package tree
 
 /**
 * 横向的逐层查找.将left和right都塞到一个数组中，对数组进行递归

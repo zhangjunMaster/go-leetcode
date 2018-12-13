@@ -1,4 +1,4 @@
-package main
+package tree
 
 /**
  * 树的操作最好的是用递归
@@ -24,9 +24,4 @@ func isMirror(t1 *TreeNode, t2 *TreeNode) bool {
 	}
 
 	return t1.Val == t2.Val && isMirror(t1.Left, t2.Right) && isMirror(t1.Right, t2.Left)
-
-}
-
-func mian() {
-
 }

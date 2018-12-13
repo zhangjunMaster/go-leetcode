@@ -57,10 +57,11 @@ func (t *TreeNode) Add(Val int) *TreeNode {
 }
 
 func (t *TreeNode) PreSearch() {
-	fmt.Println(t.Val)
-	if t.Left == nil && t.Right == nil {
+	if t == nil {
 		return
 	}
+	fmt.Println(t.Val)
+
 	t.Left.PreSearch()
 	t.Right.PreSearch()
 }
